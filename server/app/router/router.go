@@ -1,19 +1,15 @@
 package router
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"server/app/api/socket"
 	"server/app/router/example"
 	"server/app/router/system"
 	"server/config"
 	_ "server/docs"
 	"server/global"
-	"server/middleware"
-	"time"
-
-	"github.com/gin-gonic/gin"
-	"github.com/swaggo/files"
 )
 
 // InitRouter 初始化
@@ -23,26 +19,26 @@ func InitRouter() *gin.Engine {
 	r := gin.Default()
 
 	// 启用限流中间件
-	fillInterval := time.Duration(config.Conf.RateLimit.FillInterval)
-	capacity := config.Conf.RateLimit.Capacity
-	quantum := config.Conf.RateLimit.Quantum
+	//	fillInterval := time.Duration(config.Conf.RateLimit.FillInterval)
+	//	capacity := config.Conf.RateLimit.Capacity
+	//	quantum := config.Conf.RateLimit.Quantum
 
 	// 每100毫秒产生quantum个令牌，桶容量是capacity，1s=1000ms，QPS=quantum*10
-	r.Use(middleware.RateLimitMiddleware(time.Millisecond*fillInterval, capacity, quantum))
+	//	r.Use(middleware.RateLimitMiddleware(time.Millisecond*fillInterval, capacity, quantum))
 
 	// 启用全局跨域中间件
-	r.Use(middleware.CORSMiddleware())
+	//	r.Use(middleware.CORSMiddleware())
 
 	// 启用操作日志中间件
-	r.Use(middleware.OperationLogMiddleware())
+	//	r.Use(middleware.OperationLogMiddleware())
 
 	// 初始化JWT认证中间件
-	authMiddleware, err := middleware.InitAuth()
-	if err != nil {
-		global.Log.Panicf("初始化JWT中间件失败：%v", err)
-		panic(fmt.Sprintf("初始化JWT中间件失败：%v", err))
-	}
-	global.AuthMiddleware = authMiddleware
+	//	authMiddleware, err := middleware.InitAuth()
+	//	if err != nil {
+	//		global.Log.Panicf("初始化JWT中间件失败：%v", err)
+	//		panic(fmt.Sprintf("初始化JWT中间件失败：%v", err))
+	//	}
+	//	global.AuthMiddleware = authMiddleware
 
 	GroupRouter(r)
 	// r.Static(relativePath string, root string)
@@ -56,6 +52,7 @@ func GroupRouter(r *gin.Engine) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// websocket
 	r.GET("/ws", socket.Handler)
+
 	// 路由分组
 	apiGroup := r.Group("/" + config.Conf.System.UrlPathPrefix)
 	// 注册路由

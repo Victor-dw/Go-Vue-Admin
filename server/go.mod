@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
-	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.0+incompatible
 	github.com/appleboy/gin-jwt/v2 v2.7.0
 	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
@@ -29,12 +28,10 @@ require (
 	github.com/qiniu/api.v7/v7 v7.8.2
 	github.com/qiniu/go-sdk/v7 v7.13.0
 	github.com/spf13/viper v1.10.1
-	github.com/swaggo/files v1.0.0
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.8.10
 	github.com/thoas/go-funk v0.9.1
 	github.com/ugorji/go/codec v1.2.8 // indirect
-	github.com/urfave/cli/v2 v2.24.3 // indirect
 	go.uber.org/zap v1.19.1
 	golang.org/x/crypto v0.5.0
 	golang.org/x/image v0.0.0-20210628002857-a66eb6448b8d // indirect

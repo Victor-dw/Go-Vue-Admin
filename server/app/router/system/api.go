@@ -1,20 +1,17 @@
 package system
 
 import (
-	"server/app/api/system"
-	"server/global"
-	"server/middleware"
-
 	"github.com/gin-gonic/gin"
+	"server/app/api/system"
 )
 
 func InitApiRouter(r *gin.RouterGroup) gin.IRouter {
 	api := system.NewApiApi()
 	router := r.Group("/api")
 	// 开启jwt认证中间件
-	router.Use(global.AuthMiddleware.MiddlewareFunc())
+	//	router.Use(global.AuthMiddleware.MiddlewareFunc())
 	// 开启casbin鉴权中间件
-	router.Use(middleware.CasbinMiddleware())
+	//	router.Use(middleware.CasbinMiddleware())
 
 	{
 		router.GET("/list", api.GetApis)

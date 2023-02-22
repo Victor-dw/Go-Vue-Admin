@@ -25,6 +25,7 @@ type ExampleService interface {
 	DeleteExampleAll(c *gin.Context) // 批量删除
 	GetExampleRank(c *gin.Context)   // 排行榜
 	GetExampleVote(c *gin.Context)   // 投票
+	Test(c *gin.Context)
 }
 
 // ExampleApiService 服务层数据处理
@@ -318,4 +319,12 @@ func (es ExampleApiService) Sum(arr []float64, ch chan float64) {
 	}
 	// 向管道中传输数据
 	ch <- result
+}
+
+func (es ExampleApiService) Test(c *gin.Context) {
+	response.Success(c, code.SUCCESS, code.GetErrMsg(code.SUCCESS), map[string]interface{}{
+		"num":   1,
+		"total": 1,
+	})
+	return
 }
