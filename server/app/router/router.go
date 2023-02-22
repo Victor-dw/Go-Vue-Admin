@@ -6,6 +6,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"server/app/api/socket"
 	"server/app/router/example"
+	"server/app/router/shop"
 	"server/app/router/system"
 	"server/config"
 	_ "server/docs"
@@ -66,5 +67,5 @@ func GroupRouter(r *gin.Engine) {
 	system.InitDictDetailsRouter(apiGroup)  // 注册字典详情路由, jwt认证中间件,casbin鉴权中间件
 	system.InitUploadRouter(apiGroup)       // 文件上传, jwt认证中间件,casbin鉴权中间件
 	example.InitExampleRouter(apiGroup)     // 注册基础路由, jwt认证中间件,要casbin中间件
-
+	shop.InitShopRouter(apiGroup)
 }

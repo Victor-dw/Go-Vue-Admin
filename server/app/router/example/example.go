@@ -23,7 +23,7 @@ func InitExampleRouter(r *gin.RouterGroup) gin.IRouter {
 		router.DELETE("/remove", exampleRouter.DeleteExampleAll) // 全部删除
 		router.GET("/rank", exampleRouter.GetExampleRank)        // 排行榜
 		router.POST("/vote", exampleRouter.GetExampleVote)       // 投票
-		router.POST("/test", exampleRouter.Test)                 // 投票
+		router.POST("/test", exampleRouter.Test)                 // 测试
 	}
 
 	return r
