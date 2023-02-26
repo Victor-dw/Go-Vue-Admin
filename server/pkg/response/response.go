@@ -12,6 +12,28 @@ type Response struct {
 }
 
 // Success 返回成功
+func SuccessN(c *gin.Context, code int, msg interface{}, data interface{}, traceId interface{}) {
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"code":    code, // 自定义code
+		"msg":     msg,  // message
+		"data":    data, // 数据
+		"traceId": traceId,
+	})
+	return
+}
+
+// Error 返回失败
+func ErrorN(c *gin.Context, httpCode int, code int, msg string, data interface{}, traceId interface{}) {
+	c.JSON(httpCode, map[string]interface{}{
+		"code":    code, // 自定义code
+		"msg":     msg,  // message
+		"data":    data, // 数据
+		"traceId": traceId,
+	})
+	return
+}
+
+// Success 返回成功
 func Success(c *gin.Context, code int, msg interface{}, data interface{}) {
 	c.JSON(http.StatusOK, map[string]interface{}{
 		"code": code, // 自定义code

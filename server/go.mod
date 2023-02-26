@@ -3,6 +3,7 @@ module server
 go 1.16
 
 require (
+	github.com/google/uuid v1.1.2
 	github.com/BurntSushi/toml v1.2.1 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.0+incompatible
 	github.com/appleboy/gin-jwt/v2 v2.7.0

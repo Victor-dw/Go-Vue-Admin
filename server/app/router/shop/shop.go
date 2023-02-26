@@ -19,8 +19,11 @@ func InitShopRouter(r *gin.RouterGroup) gin.IRouter {
 		//router.GET("/rank", exampleRouter.GetExampleRank)        // 排行榜
 		//router.POST("/vote", exampleRouter.GetExampleVote)       // 投票
 		//router.POST("/test", exampleRouter.Test)                 // 测试
-		router.POST("/test", shopRouter.Test)   //
-		router.POST("/login", shopRouter.Login) //
+		router.POST("/test", shopRouter.Test)                               //
+		router.POST("/login", shopRouter.Login)                             //
+		router.POST("/createUserInfo", shopRouter.CreateUserInfo)           //
+		router.POST("/updateUserInfo", shopRouter.UpdateUserInfo)           //
+		router.GET("/searchUserInfoByPhone", shopRouter.GetUserInfoByPhone) //
 	}
 
 	return r

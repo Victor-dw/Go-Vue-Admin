@@ -28,13 +28,16 @@ logs:
 
 mysql:
   # 用户名
-  username: root
+  #username: root
+  username: yandongyan
   # 密码
-  password: tanxi82694
+  #password: tanxi82694
+  password: GDXwvz^584
   # 数据库名
-  database: gin-vue-admin
+  #database: gin-vue-admin
+  database: shop
   # 主机地址 182.61.133.217
-  host: 182.61.133.217
+  host: 123.249.113.176
   # 端口
   port: 3306
   # 连接字符串参数
