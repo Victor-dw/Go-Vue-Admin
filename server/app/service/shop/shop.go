@@ -45,14 +45,20 @@ func (s Shop) CreateUserInfo(userInfo *shop.ShopUserInfo, traceId string) error 
 
 // 更新用户信息
 func (s Shop) UpdateUserInfo(userInfo *shop.ShopUserInfo, traceId string) error {
+	userInfoByPhone, err := s.GetUserInfoByPhone(userInfo.Phone)
+	if err != nil {
+		global.Log.Error("UpdateUserInfo " + "用户不存在" + traceId)
+		return err
+	}
+
 	// 检查用户是否存在
-	if userInfo == nil {
+	if userInfoByPhone == nil {
 		global.Log.Error("UpdateUserInfo " + "用户不存在" + traceId)
 		return errors.New("user not found")
 	}
 
 	// 更新用户信息
-	err := global.DB.Model(&shop.ShopUserInfo{}).Where("id = ?", userInfo.ID).
+	err = global.DB.Model(&shop.ShopUserInfo{}).Where("id = ?", userInfoByPhone.ID).
 		Updates(shop.ShopUserInfo{
 			Object:   userInfo.Object,
 			Addar:    userInfo.Addar,

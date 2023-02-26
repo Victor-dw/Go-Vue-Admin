@@ -20,13 +20,13 @@ type ShopAdmin struct {
 }
 
 type ShopUserInfo struct {
-	ID        int       `gorm:"primarykey"`
-	Object    string    `gorm:"not null;comment:'商品名称'"`
-	Addar     string    `gorm:"not null;comment:'用户地址'"`
-	Name      string    `gorm:"not null;comment:'用户姓名'"`
-	Phone     string    `gorm:"not null;comment:'用户电话'uniqueIndex"`
-	WXNumber  string    `gorm:"not null;comment:'用户微信'"`
-	Code      string    `gorm:"not null;comment:'快递单号';index:code_index"`
-	CreatedAt time.Time `gorm:"autoCreateTime;comment:'创建时间'"`
-	UpdatedAt time.Time `gorm:"autoUpdateTime;comment:'更新时间'"`
+	ID       int    `gorm:"primarykey"`
+	Object   string `gorm:"not null;comment:'商品名称'"`
+	Addar    string `gorm:"not null;comment:'用户地址'"`
+	Name     string `gorm:"not null;comment:'用户姓名'"`
+	Phone    string `gorm:"not null;comment:'用户电话'uniqueIndex"`
+	WXNumber string `gorm:"not null;comment:'用户微信'"`
+	Code     string `gorm:"not null;comment:'快递单号';index:code_index"`
+	//CreateTime time.Time `gorm:"create_time;comment:'创建时间'"`
+	//UpdateTime time.Time `gorm:"update_time;comment:'更新时间'"`
 }
